@@ -40,5 +40,6 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## Использование
 
-
+Все имеющиеся запросы есть в openapi-schema.yml

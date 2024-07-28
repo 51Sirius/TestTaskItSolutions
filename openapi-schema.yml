@@ -1,0 +1,118 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /adverts/:
+    get:
+      operationId: listAdverts
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advert'
+          description: ''
+      tags:
+      - adverts
+  /adverts/{advert_id}/:
+    get:
+      operationId: listAdverts
+      description: ''
+      parameters:
+      - name: advert_id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advert'
+          description: ''
+      tags:
+      - adverts
+  /register/:
+    post:
+      operationId: createUser
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - register
+components:
+  schemas:
+    Advert:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 255
+        reference_id:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        author:
+          type: string
+          maxLength: 255
+        views_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+        position:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: -9223372036854775808
+          format: int64
+      required:
+      - title
+      - reference_id
+      - author
+      - views_count
+      - position
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - username
+      - password

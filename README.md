@@ -28,5 +28,17 @@
    восстановления пароля);
 2. Все обращения к базе данных должны быть реализованы при помощи ORM запросов.
 
+## Запуск 
+
+```
+python -m venv .venv
+.venv/Scripts/activate
+pip install -r requirements.txt
+cd TestTaskItSolution
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+
 
 

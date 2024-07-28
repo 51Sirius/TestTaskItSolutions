@@ -16,5 +16,7 @@ urlpatterns = [
         views.AdvertView.as_view(actions={"get": "list"}),
         name="adverts-by-id",
     ),
-
+    path(
+        "register/", views.CreateUserView.as_view(), name="create-user"
+    ),
 ]
